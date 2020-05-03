@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: docker run -d -p 4444:4444 --name selenium-hub selenium/hub
+      - run: docker run -d --name chrome-node --link selenium-hub:hub selenium/node-chrome
+      - run: java -jar gridtestng.jar

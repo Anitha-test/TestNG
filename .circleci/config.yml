@@ -4,6 +4,7 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: docker network create grid
       - run: docker run -d -p 4444:4444 --net grid --name selenium-hub selenium/hub
       - run: docker run -d --net grid -e HUB_HOST=selenium-hub --name chrome-node selenium/node-chrome
       - run: java -jar gridtestng.jar

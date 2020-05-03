@@ -5,5 +5,5 @@ jobs:
       - checkout
       - run: |
         docker run -d -p 4444:4444 --name selenium-hub selenium/hub
-	docker run -d --name chrome-node --link selenium-hub:hub selenium/node-chrome
+        docker run -d --name chrome-node --link selenium-hub:hub selenium/node-chrome
         java -jar gridtestng.jar
